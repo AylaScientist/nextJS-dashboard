@@ -2,9 +2,8 @@ export default function Layout (
     { children } : { children: React.ReactNode} 
     )
 {
-    return (
+    return ( /* That&apos;s the invoice layout */            
         <section>
-            That&apos;s the invoice layout
             {children}
         </section>
     )
