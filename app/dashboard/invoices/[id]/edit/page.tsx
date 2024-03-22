@@ -2,6 +2,7 @@ import Form from '@/app/dashboard/invoices/edit-form';
 import Breadcrumbs from '@/app/dashboard/invoices/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { v4 as uuidv4 } from 'uuid';
+import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: { params: { id: string } }) {
     const id = params.id;
@@ -10,6 +11,10 @@ export default async function Page({ params }: { params: { id: string } }) {
         fetchCustomers(),
     ]);
     const uuid = uuidv4()
+
+    if (!invoice) {
+        notFound();
+    }
 
     return (
         <main>
